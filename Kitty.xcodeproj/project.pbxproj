@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AE7CF28421B44FAEA08F63C5 /* libPods-Kitty.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EF4A76367D8F490B98BAC313 /* libPods-Kitty.a */; };
 		D84D3FAC19D38AA600C4E7B9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84D3FAB19D38AA600C4E7B9 /* AppDelegate.swift */; };
 		D84D3FAE19D38AA600C4E7B9 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84D3FAD19D38AA600C4E7B9 /* MasterViewController.swift */; };
 		D84D3FB019D38AA600C4E7B9 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84D3FAF19D38AA600C4E7B9 /* DetailViewController.swift */; };
@@ -27,6 +28,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7EF6D8BA684444A094D34151 /* Pods-Kitty.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kitty.xcconfig"; path = "Pods/Pods-Kitty.xcconfig"; sourceTree = "<group>"; };
 		D84D3FA619D38AA600C4E7B9 /* Kitty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kitty.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D84D3FAA19D38AA600C4E7B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D84D3FAB19D38AA600C4E7B9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -38,6 +40,8 @@
 		D84D3FBD19D38AA600C4E7B9 /* KittyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KittyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D84D3FC219D38AA600C4E7B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D84D3FC319D38AA600C4E7B9 /* KittyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KittyTests.swift; sourceTree = "<group>"; };
+		D84D3FCD19D38EA500C4E7B9 /* Kitty-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Kitty-Bridging-Header.h"; sourceTree = "<group>"; };
+		EF4A76367D8F490B98BAC313 /* libPods-Kitty.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Kitty.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +49,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE7CF28421B44FAEA08F63C5 /* libPods-Kitty.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -58,12 +63,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BE7BCCEDC4784CD99F443CA4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EF4A76367D8F490B98BAC313 /* libPods-Kitty.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		D84D3F9D19D38AA600C4E7B9 = {
 			isa = PBXGroup;
 			children = (
 				D84D3FA819D38AA600C4E7B9 /* Kitty */,
 				D84D3FC019D38AA600C4E7B9 /* KittyTests */,
 				D84D3FA719D38AA600C4E7B9 /* Products */,
+				7EF6D8BA684444A094D34151 /* Pods-Kitty.xcconfig */,
+				BE7BCCEDC4784CD99F443CA4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -94,6 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				D84D3FAA19D38AA600C4E7B9 /* Info.plist */,
+				D84D3FCD19D38EA500C4E7B9 /* Kitty-Bridging-Header.h */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -122,9 +138,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D84D3FC719D38AA600C4E7B9 /* Build configuration list for PBXNativeTarget "Kitty" */;
 			buildPhases = (
+				6D88A78B68B6491DB1618819 /* Check Pods Manifest.lock */,
 				D84D3FA219D38AA600C4E7B9 /* Sources */,
 				D84D3FA319D38AA600C4E7B9 /* Frameworks */,
 				D84D3FA419D38AA600C4E7B9 /* Resources */,
+				167B4DD6273A4D70AD91DC47 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -209,6 +227,39 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		167B4DD6273A4D70AD91DC47 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-Kitty-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6D88A78B68B6491DB1618819 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		D84D3FA219D38AA600C4E7B9 /* Sources */ = {
@@ -340,21 +391,25 @@
 		};
 		D84D3FC819D38AA600C4E7B9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7EF6D8BA684444A094D34151 /* Pods-Kitty.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Kitty/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Kitty/Kitty-Bridging-Header.h";
 			};
 			name = Debug;
 		};
 		D84D3FC919D38AA600C4E7B9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7EF6D8BA684444A094D34151 /* Pods-Kitty.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Kitty/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Kitty/Kitty-Bridging-Header.h";
 			};
 			name = Release;
 		};
@@ -411,6 +466,7 @@
 				D84D3FC919D38AA600C4E7B9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D84D3FCA19D38AA600C4E7B9 /* Build configuration list for PBXNativeTarget "KittyTests" */ = {
 			isa = XCConfigurationList;
@@ -419,6 +475,7 @@
 				D84D3FCC19D38AA600C4E7B9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
