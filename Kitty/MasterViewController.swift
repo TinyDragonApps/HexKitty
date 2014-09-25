@@ -33,14 +33,33 @@ class MasterViewController: UITableViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         if self.client == nil {
-            OCTClient.signInToServerUsingWebBrowser(OCTServer.dotComServer(), scopes: OCTClientAuthorizationScopesUser).subscribeNext({ (authenticatedClient) -> Void in
+            OCTClient.signInToServerUsingWebBrowser(OCTServer.dotComServer(), scopes: OCTClientAuthorizationScopesNotifications).subscribeNext({ (authenticatedClient) -> Void in
                     self.client = authenticatedClient as? OCTClient
+                    self.loadNotifications()
                 }, error: { (error) -> Void in
                     
                 }) { () -> Void in
                     
             }
+        } else {
+            self.loadNotifications()
         }
+    }
+    
+    func loadNotifications() {
+        self.client?.fetchNotificationsNotMatchingEtag(nil, includeReadNotifications: true, updatedSince: nil).subscribeNext({ (notification) -> Void in
+            
+            if let resp = notification as? OCTResponse {
+                let n = resp.parsedResult as OCTNotification
+                self.objects.addObject(n)
+                self.tableView.reloadData()
+            }
+            
+            }, error: { (error) -> Void in
+            
+            }, completed: { () -> Void in
+            
+        })
     }
 
     override func didReceiveMemoryWarning() {
@@ -53,7 +72,7 @@ class MasterViewController: UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showDetail" {
             if let indexPath = self.tableView.indexPathForSelectedRow() {
-                let object = objects[indexPath.row] as NSDate
+                let object = self.objects[indexPath.row] as OCTNotification
                 let controller = (segue.destinationViewController as UINavigationController).topViewController as DetailViewController
                 controller.detailItem = object
                 controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
@@ -69,29 +88,21 @@ class MasterViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return objects.count
+        return self.objects.count
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
 
-        let object = objects[indexPath.row] as NSDate
-        cell.textLabel?.text = object.description
+        let object = self.objects[indexPath.row] as OCTNotification
+        cell.textLabel?.text = object.title
+        cell.detailTextLabel?.text = object.repository.name
         return cell
     }
 
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
         return true
-    }
-
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            objects.removeObjectAtIndex(indexPath.row)
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
-        }
     }
 
 
