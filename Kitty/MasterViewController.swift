@@ -12,7 +12,7 @@ class MasterViewController: UITableViewController {
 
     var detailViewController: DetailViewController? = nil
     var objects = NSMutableArray()
-
+    var client: OCTClient? = nil
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -27,6 +27,19 @@ class MasterViewController: UITableViewController {
         if let split = self.splitViewController {
             let controllers = split.viewControllers
             self.detailViewController = controllers[controllers.count-1].topViewController as? DetailViewController
+        }
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        if self.client == nil {
+            OCTClient.signInToServerUsingWebBrowser(OCTServer.dotComServer(), scopes: OCTClientAuthorizationScopesUser).subscribeNext({ (authenticatedClient) -> Void in
+                    self.client = authenticatedClient as? OCTClient
+                }, error: { (error) -> Void in
+                    
+                }) { () -> Void in
+                    
+            }
         }
     }
 
