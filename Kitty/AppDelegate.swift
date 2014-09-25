@@ -48,6 +48,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String, annotation: AnyObject?) -> Bool {
         if url.host == "oauth" {
             OCTClient.completeSignInWithCallbackURL(url)
+            return true
         }
         return false;
     }
